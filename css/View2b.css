@@ -1,0 +1,67 @@
+#View2b{
+	width:37%;
+	display: none;
+	background-color: white;
+	position:absolute ;
+	z-index:9999;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	-webkit-box-shadow:1px 1px 3px #292929;
+    -moz-box-shadow:1px 1px 3px #292929;
+    box-shadow:1px 1px 3px #292929;
+}
+
+#View2b svg {
+	font: 10px sans-serif;
+	/*padding: 10px;*/
+}
+
+#View2b .xAxis,
+#View2b .frame {
+	shape-rendering: crispEdges;
+}
+
+#View2b .xAxis line {
+	stroke: #ddd;
+}
+
+#View2b .xAxis path {
+	display: none;
+}
+
+#View2b .yAxis,
+#View2b .frame {
+	shape-rendering: crispEdges;
+}
+
+#View2b .yAxis line {
+	stroke: #ddd;
+}
+
+#View2b .yAxis path {
+	display: none;
+}
+
+#View2b .frame {
+	fill: none;
+	stroke: #999;
+}
+
+#View2b circle {
+	fill-opacity: .4;
+}
+
+#View2b circle.hidden {
+	fill: #ccc !important;
+}
+
+#View2b .extent {
+	fill: #000;
+	fill-opacity: .125;
+	stroke: #fff;
+}
+
+#View2b text{
+	font-family:Calibri;
+	font-size:15px;
+}

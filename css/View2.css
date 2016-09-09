@@ -1,0 +1,59 @@
+
+
+#View2 svg {
+	font: 10px sans-serif;
+	padding: 10px;
+}
+
+#View2 .xAxis,
+#View2 .frame {
+	shape-rendering: crispEdges;
+}
+
+#View2 .xAxis line {
+	stroke: #ddd;
+}
+
+#View2 .xAxis path {
+	display: none;
+}
+
+#View2 .yAxis,
+#View2 .frame {
+	shape-rendering: crispEdges;
+}
+
+#View2 .yAxis line {
+	stroke: #ddd;
+}
+
+#View2 .yAxis path {
+	display: none;
+}
+
+#View2 .frame {
+	fill: none;
+	stroke: #999;
+}
+
+#View2 circle {
+	fill-opacity: .4;
+}
+
+#View2 circle.hidden {
+	fill: #ccc !important;
+}
+
+#View2 .extent {
+	fill: #000;
+	fill-opacity: .125;
+	stroke: #fff;
+}
+
+#View2 text{
+	font-family:Calibri,sans-serif;
+	font-size:7px;
+}
+#View2 font{
+	margin-left:20px;
+}

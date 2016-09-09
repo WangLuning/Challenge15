@@ -1,0 +1,28 @@
+
+.left{
+  position: absolute;
+  left: 0%;
+  width:35%;
+  top: 0%;
+  height: 100%;
+  /*background-color: #333333;*/
+}
+
+.middle{
+  position: absolute;
+  left: 35%;
+  width:45%;
+  top: 0%;
+  height: 100%;
+  /*background-color: #666666;*/
+}
+
+
+.right{
+  position: absolute;
+  left: 80%;
+  width:20%;
+  top: 0;
+  height: 100%;
+  /*background-color: #999999;*/
+}

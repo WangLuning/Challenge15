@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>map</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/mycss.css">
+  <link rel="stylesheet" type="text/css" href="css/View2.css">
+  <link rel="stylesheet" type="text/css" href="css/View2b.css"> 
+  <link rel="stylesheet" type="text/css" href="css/View3.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+  
+  <script src="jslib/jquery-1.11.3.min.js"></script>
+  <script src="jslib/spin.min.js"></script>
+  <script src="jslib/underscore-min.js"></script>
+  <script src="jslib/Blob.js"></script>
+  <script src="jslib/FileSaver.js"></script>
+  <script src="jslib/svg.min.js"></script>
+  <script type="text/javascript" src="js/importfile.js"></script>
+  <script type="text/javascript" src="js/b4.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+
+<body>
+	<div id="View2b">
+	</div>
+  <div class="left">
+    <!-- map view put here --> 
+	<div id="v1await">
+	</div>
+	<div id="view1btn">
+	<!--<button type="button" id="view1change">change function</button>-->
+	<!--<input type="button" value="show track" id="view1change" />-->
+	
+	<input type="checkbox" id="descheck" checked="checked"/>
+	destinations
+	<input type="checkbox" id="trackcheck" checked="checked"/>
+	track
+	<input type="checkbox" id="commcheck" checked="checked"/>
+	communication
+	<input type="button" value="autoplay" id="view1autoplay" />
+	
+	</div >
+	<div id="view1" >
+	<svg id="view1svg" >
+	</svg>
+	</div>
+	<!--<div id="view1a" >
+	</div>-->
+	
+	<div id="va2outer">
+	<div id="va2p">type of attraction visited time profile</div>
+	<div id="va2closediv">
+		<a id="viewa2close"><i class="fa fa-remove "></i></a>
+	</div>
+	<div id="view1a2" ng-app="svg" ng-controller="SvgHistogram">
+	
+	<button type="button" id="viewa2draw" ng-hide="true" ng-click="showrects($event)"></button>
+	<button type="button" id="viewa2rcvhl" ng-hide="true" ng-click="rcvhlspot($event)"></button>
+	<button type="button" id="viewa2hlid" ng-hide="true" ng-click="hlid($event)"></button>
+	<svg id="va2svg" width="100%" height="500" > 
+	<rect id="va2zoom" style="fill:white"></rect>
+	<g class="va2rect" ng-repeat="idl in Properties ">
+		<rect lid="{{idl.idnum}}" ng-attr-x="{{idl.x}}" ng-attr-y="{{idl.y}}" ng-attr-width="{{idl.width}}" ng-attr-height="{{idl.height}}" ng-attr-fill={{idl.fill}} ng-click="hlspot(idl.idnum,$event);$event.stopPropagation();">
+		<title>{{idl.type}}</title>
+		</rect>
+	</g>
+	
+	</svg>
+	</div>	
+	</div>
+	
+	<!--
+	<div id="view1b" >
+	
+	</div>-->
+	<div id="viewb2outer">
+	<div id="v1bp">
+	num in selected attraction time profile
+	</div>
+	<div id="v1bclosediv">
+	
+	<a id="viewb2close"><i class="fa fa-remove "></i></a>
+	</div>
+	<div id="view1b2" >
+	
+	</div>
+	</div>
+	<div id="view1b3" >
+	<input type="checkbox" id="desnumcheck" checked="checked"/>
+	destination
+	<input type="checkbox" id="commnumcheck" checked="checked"/>
+	communication
+	<select id = "vb2Choose">
+		<option value = "loc" selected="selected">choose id by loc and time</option>
+		<option value = "comm">choose id by comm and time</option>
+	</select>
+	</div>
+	
+	<div id="v6outer">
+	<div id="v6p">communication data</div>
+	<div id="v6closediv">
+		<a id="view6close"><i class="fa fa-remove "></i></a>
+	</div>
+	<div id="view6">
+	</div>	
+	</div>
+	
+	
+  </div>
+
+  <div class="middle">
+    <!-- parallel coordinate view put here --> 
+	<div id="View3">
+		<div>
+			<input type="button"  value="Fri" id="frinum">
+			<input type="button"  value="Sat" id="satnum">
+			<input type="button"  value="Sun" id="sunnum">
+		</div>
+	</div>
+	<div id="View2">
+		<!-- scatter plot view put here -->
+			<form>
+			<font>xAxis</font>
+			<select id = "xAxisChoose">
+				<option value = "num">Times to any attraction</option>
+				<option value = "stay">Total time in dinofun world(hour)</option>
+				<option value = "inin">Entry time(hour)</option>
+				<option value = "outout">Leaving time(hour)</option>
+				<option value = "average">Average time at one attraction(hour)</option>
+				<option value = "fromfrom">Number of calls from to the id</option>
+				<option value = "toto">Number of calls to the id</option>
+				<option value = "allall">Number of calls</option>
+				<option value = "comm">Number of contacts</option>
+				<option value = "way">Total time on the road(hour)</option>
+				<option value = "wayPercent">Percentage of time spend on the road(%)</option>
+				<option value = "numPlaceChoosen" id = "numPlaceX">Times to the selected attraction</option>
+				<option value = "stayPlaceChoosen">Total time at the selected attraction(second)</option>
+			</select>
+			<br>
+			<font>yAxis</font>
+			<select id = "yAxisChoose">
+				<option value = "num">Times to any attraction</option>
+				<option value = "stay" selected = "selected">Total time in dinofun world(hour)</option>
+				<option value = "inin">Entry time(hour)</option>
+				<option value = "outout">Leaving time(hour)</option>
+				<option value = "average">Average time at one attraction(hour)</option>
+				<option value = "fromfrom">Number of calls from to the id</option>
+				<option value = "toto">Number of calls to the id</option>
+				<option value = "allall">Number of calls</option>
+				<option value = "comm">Number of contacts</option>
+				<option value = "way">Total time on the road(hour)</option>
+				<option value = "wayPercent">Percentage of time spend on the road(%)</option>
+				<option value = "numPlaceChoosen">Times to the selected attraction</option>
+				<option value = "stayPlaceChoosen" id = "stayPlaceY">Total time at the selected attraction(second)</option>
+			</select>
+			</form>
+	  </div>
+  </div>
+
+  <div class="right">
+    <div id="View5">
+    <!-- group select put here -->
+		<font>Please input the range of id's number in a group:</font>
+		<br>
+		<input type="text" id="minNum" size="3">
+		<font>-</font>
+		<input type="text" id="maxNum" size="3">
+		<button type="button" id="inputNum">submit</button>
+		<br>
+		<font>Leaders of eligible groups:</font>
+
+		<select id = "groupId">
+			<option value = "none">leader's id</option>
+		</select>
+		<br>
+		<font id="resultOfGroup"></font>
+		<br>
+		<br>
+	</div>
+    <!-- id list put here --> 
+	<div>
+	<form id="view4form">
+	  <fieldset id="list" >
+	    <div id="listbtn" >
+		<div class="btn-group">
+		  <a class="btn" id="add"><i class="icon-align-left">add</i></a>
+		  <a class="btn" id="clear"><i class="icon-align-center">clear</i></a>
+		  <a class="btn" id="v4submit"><i class="icon-align-right">submit</i></a>
+		  <a class="btn" id="save"><i class="icon-align-justify">save</i></a>
+		  <a href="javascript:;" class="filea">
+			<input type="file" id="file" onchange="handleFiles(this.files)" ls="" >import</input>
+		</a>
+		</div>
+
+		
+		</div>
+		<div id="view4" >
+		</div>
+		<legend id="v4lgd">idlist</legend>
+	  </fieldset>
+	  
+	  
+	</form>
+	
+	<iframe src="" width="0" height="0" id="imgFrame" name="imgFrame"></iframe>
+	</div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+  </script>
+
+  <script type="text/javascript" src="js/view1a.js"></script>
+  <script type="text/javascript" src="js/view1b.js"></script>
+  <script type="text/javascript" src="js/observer.js"></script>
+  <script type="text/javascript" src="js/test.js"></script>
+  <script type="text/javascript" src="js/view4.js"></script>
+  <script type="text/javascript" src="js/XY_c.js"></script>
+  <script type="text/javascript" src="js/view5.js"></script>
+  <script type="text/javascript" src="js/view6.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
